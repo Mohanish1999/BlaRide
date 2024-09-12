@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!--<style>-->
+    <!--html {-->
+        <!--background: url("/images/bg.png") no-repeat center center fixed;-->
+        <!-- -webkit-background-size: cover;-->
+        <!-- -moz-background-size: cover;-->
+        <!-- -o-background-size: cover;-->
+        <!--background-size: cover;-->
+    <!--}-->
+<!--</style>-->
+<head th:replace="common/header :: common-header"/>
+<body roleId="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<head th:replace="common/header :: navbar"/>
+<!-- FACEBOOK WIDGET -->
+<div id="fb-root"></div>
+
+<!-- /FACEBOOK WIDGET -->
+<div class="global-wrap">
+
+    <!-- TOP AREA -->
+    <div class="top-area show-onload">
+        <div class="bg-holder full">
+            <div class="bg-mask"></div>
+            <div class="bg-parallax" style="background-image:url(/images/bg.png);"></div>
+            <div class="bg-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="search-tabs search-tabs-bg mt50">
+                                <div class="gap"></div>
+                                <div class="gap"></div>
+                                <h1>Find Your Perfect Trip</h1>
+                                <div class="gap gap-small"></div>
+                                <div class="tabbable">
+                                    <ul class="nav nav-tabs" id="myTab">
+                                        <li class="active"><a href="#tab-1" data-toggle="tab"><i class="fa fa-user"></i> <span >Rider</span></a>
+                                        </li>
+                                        <li><a href="#tab-2" data-toggle="tab"><i class="fa fa-car"></i> <span >Driver</span></a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade in active" id="tab-1">
+                                            <h2>Search for Ride As Rider</h2>
+                                            <form th:action="@{/account/driver-offer/search}" method="get">
+                                                <div class="tabbable">
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane fade in active" id="trip-search-1">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group form-group-icon-left"><i class="fa fa-map-marker input-icon input-icon-hightlight"></i>
+                                                                        <label>Pick-up Location</label>
+                                                                        <input class="typeahead form-control" placeholder="City, Province, Country" type="text" name="departure" required="required"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group form-group-icon-left"><i class="fa fa-map-marker input-icon input-icon-hightlight"></i>
+                                                                        <label>Drop-off Location</label>
+                                                                        <input class="typeahead form-control" placeholder="City, Province, Country" type="text" name="arrival" required="required"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group form-group-icon-left" id="sandbox-container"><i class="fa fa-calendar input-icon input-icon-hightlight"></i>
+                                                                        <label>Travel Date</label>
+                                                                        <input class="form-control" type="text" name="date"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-primary btn-lg" type="submit">Search for trip</button>
+                                            </form>
+                                        </div>
+                                        <div class="tab-pane fade" id="tab-2">
+                                            <h2>Search for Ride As Driver</h2>
+
+                                            <form th:action="@{/account/rider-request/search}" method="get">
+                                                <div class="tabbable">
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane fade in active" id="trip-search-2">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group form-group-icon-left"><i class="fa fa-map-marker input-icon input-icon-hightlight"></i>
+                                                                        <label>Pick-up Location</label>
+                                                                        <input class="typeahead form-control" placeholder="City, Province, Country" type="text" name="departure" required="required"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group form-group-icon-left"><i class="fa fa-map-marker input-icon input-icon-hightlight"></i>
+                                                                        <label>Drop-off Location</label>
+                                                                        <input class="typeahead form-control" placeholder="City, Province, Country" type="text" name="arrival" required="required"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group form-group-icon-left" id="sandbox-container2"><i class="fa fa-calendar input-icon input-icon-hightlight"></i>
+                                                                        <label>Travel Date</label>
+                                                                        <input class="form-control" type="text" name="date"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <button class="btn btn-primary btn-lg" type="submit">Search for trip</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END TOP AREA  -->
+    <div class="gap"></div>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4">
+                    <header class="thumb-header"><i class="fa fa-briefcase box-icon-md round box-icon-black animate-icon-top-to-bottom"></i>
+                    </header>
+                    <h4 class="title">Business Trip</h4>
+                    <p>Sample HTML page with Twitter's Bootstrap. Code example of Easy Sticky Footer using HTML, Javascript, jQuery, and CSS. This bootstrap tutorial covers all the major elements of responsive</p>
+
+            </div>
+
+            <div class="col-md-4">
+                    <header class="thumb-header"><i class="fa fa-thumbs-o-up box-icon-md round box-icon-black animate-icon-top-to-bottom"></i>
+                    </header>
+                <h4 class="title">Best Carpool Agent</h4>
+                <p>Sample HTML page with Twitter's Bootstrap. Code example of Easy Sticky Footer using HTML, Javascript, jQuery, and CSS. This bootstrap tutorial covers all the major elements of responsive</p>
+            </div>
+
+            <div class="col-md-4">
+                    <header class="thumb-header"><i class="fa fa-lock box-icon-md round box-icon-black animate-icon-top-to-bottom"></i>
+                    </header>
+                <h4 class="title">Trust and Safety</h4>
+                <p>Sample HTML page with Twitter's Bootstrap. Code example of Easy Sticky Footer using HTML, Javascript, jQuery, and CSS. This bootstrap tutorial covers all the major elements of responsive</p>
+
+            </div>
+        </div>
+        <div class="gap"></div>
+
+    </div>
+
+    <div class="bg-holder">
+        <div class="bg-mask"></div>
+        <div class="bg-img" style="background-image:url(images/bmw.jpg);"></div>
+        <div class="bg-content">
+            <div class="container">
+                <div class="gap gap-big text-center text-white">
+                    <div class="gap"></div>
+                    <div class="gap"></div>
+                    <div class="gap"></div>
+                    <div class="gap"></div>
+                    <div class="gap gap-small"></div>
+
+                    <h5 class="last-minute-title">North York - Waterloo</h5>
+                    <p class="last-minute-date">Fri 14 Mar - Sun 16 Mar</p>
+                    <p class="last-minute-date">$20 / person</p>
+                    <!--<p class="mb20"><b>$25</b> / person</p>-->
+                    <!--<a class="btn btn-lg btn-white btn-ghost" href="#">Book Now <i class="fa fa-angle-right"></i></a>-->
+                    <div class="gap"></div>
+                    <div class="gap"></div>
+                    <div class="gap"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="gap"></div>
+        <h2 class="text-center">Top Destinations</h2>
+        <div class="gap">
+            <div class="row row-wrap">
+                <div class="col-md-3">
+                        <header class="thumb-header">
+                                <img src="/images/toronto.png" alt="Image Alternative text" />
+                        </header>
+
+                        <div class="thumb-caption">
+                            <h4 class="thumb-title"><a class="text-darken" href="#">Toronto</a></h4>
+                            <div class="thumb-caption">
+                                <p class="thumb-desc">Nullam potenti ac sagittis iaculis justo</p>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-md-3">
+                    <header class="thumb-header">
+                        <img src="/images/waterloo.jpg" alt="Image Alternative text" />
+                    </header>
+
+                    <div class="thumb-caption">
+                        <h4 class="thumb-title"><a class="text-darken" href="#">Waterloo</a></h4>
+                        <div class="thumb-caption">
+                            <p class="thumb-desc">Nullam potenti ac sagittis iaculis justo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <header class="thumb-header">
+                        <img src="/images/kingston.jpg" alt="Image Alternative text" />
+                    </header>
+
+                    <div class="thumb-caption">
+                        <h4 class="thumb-title"><a class="text-darken" href="#">Kingston</a></h4>
+                        <div class="thumb-caption">
+                            <p class="thumb-desc">Nullam potenti ac sagittis iaculis justo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <header class="thumb-header">
+                        <img src="/images/guelph.jpg" alt="Image Alternative text" />
+                    </header>
+
+                    <div class="thumb-caption">
+                        <h4 class="thumb-title"><a class="text-darken" href="#">Guelph</a></h4>
+                        <div class="thumb-caption">
+                            <p class="thumb-desc">Nullam potenti ac sagittis iaculis justo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gap"></div>
+    </div>
+
+
+</div>
+<div th:replace="common/header :: footer"/>
+
+<div th:replace="common/header :: body-bottom-scripts"/>
+</body>
+</html>

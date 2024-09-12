@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<style>
+    html {
+        background-color: #F2F4F8;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+</style>
+<head th:replace="common/header :: common-header"/>
+<body>
+<!-- Login Section -->
+<section id="content" class="m-t-lg wrapper-md animated fadeInUp">
+    <div class="gap gap-big"></div>
+    <div class="container aside-xl">
+        <section class="m-b-lg">
+            <form class="form-signin" th:action="@{/index}" method="post">
+                <div class="alert alert-danger text-center" th:if="${param.error}">
+                    Invalid username and password.
+                </div>
+                <div class="alert alert-danger text-center" th:if="${param.logout}">
+                    You have been logged out.
+                </div>
+                <h3 class="wrapper text-center">
+                    <strong>BLA_RIDES</strong>
+                </h3>
+                <div class="form-group">
+                    <label for="username" class="sr-only">Username</label>
+                    <input type="text" roleId="username" class="form-control" placeholder="Username" name="username"
+                           id="username" style="height: 40px;"
+                           required="required" autofocus="autofocus"/>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="sr-only">Password</label>
+                    <input type="password" roleId="inputPassword" class="form-control" placeholder="Password"
+                           id="password" style="height: 40px;"
+                           name="password" required="required"/>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" name="remember-me" id="remember-me"/> &nbsp; Remember me
+                </div>
+                <button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
+                <div class="text-center m-t m-b"><a href="#"><small>Forgot password?</small></a></div>
+                <!--<hr/>-->
+                <p class="text-muted text-center"><small>Do not have an account?</small></p>
+                <a type="submit" class="btn btn-lg btn-default btn-block" th:href="@{/signup}">Create an account</a>
+            </form>
+        </section>
+    </div>
+</section>
+
+
+
+
+<div th:replace="common/header :: body-bottom-scripts"/>
+
+</body>
+</html>

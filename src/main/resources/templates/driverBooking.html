@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header"/>
+<body roleId="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<head th:replace="common/header :: navbar"/>
+<div class="container main">
+    <div class="gap gap-mini"></div>
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Create new drive</h3>
+            <form th:action="@{/bookings/driver-offer}" method="post" id="bookingForm">
+                <input type="hidden" name="id" th:value="${bookingReference.bookingReferenceId}"/>
+
+                <div class="form-group">
+                    <label>Pick your departure time:</label>
+                    <div class="input-append date input-group" id="form_datetime" data-view="hour">
+                        <input class="form-control" type="text" value=""
+                               th:value="${dateString}" name="dateString"
+                               id="dateString" required="required"/>
+                        <span class="input-group-addon"><i class="fa fa-times" aria-hidden="true"></i></span>
+                        <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                    </div>
+                </div>
+
+                <div class="form-group autocomplete">
+                    <label for="autocomplete">Pick your departure location:</label>
+                        <input type="text" required="required" class="form-control" th:value="${bookingReference.departure}" id="autocomplete"
+                               name="departure" placeholder="Enter your address" onFocus="geolocate()"/>
+                </div>
+
+                <div class="form-group autocomplete">
+                    <label for="autocomplete2">Pick your arrival location:</label>
+                    <input type="text" required="required" class="form-control" th:value="${bookingReference.arrival}" id="autocomplete2"
+                           name="arrival" placeholder="Enter your address" onFocus="geolocate()"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="cols-sm-2 control-label">Passenger number:</label>
+                    <div class="cols-sm-5">
+                        <input type="number" class="slider slider-horizontal form-control" value="1"
+                               data-slider-min="1" data-slider-max="7" data-slider-step="1" data-slider-value="1" data-slider-orientation="horizontal"
+                               name="passengerNumber" id="passengerNumber"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="cols-sm-2 control-label" for="price">Price per seat:</label>
+                    <div class="cols-sm-5">
+                        <input type="number" required="required" class="slider slider-horizontal form-control" value="10"
+                               data-slider-min="10" data-slider-max="100" data-slider-step="5" data-slider-value="10" data-slider-orientation="horizontal"
+                               name="price" id="price"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Service provide:</label>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="checkbox i-checks">
+                                <label>
+                                    <input type="checkbox" value=""/>
+                                    <i></i>
+                                    <span>Door to Door</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="checkbox i-checks">
+                                <label>
+                                    <input type="checkbox" value=""/>
+                                    <i></i>
+                                    <span>Climate Control</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="checkbox i-checks">
+                                <label>
+                                    <input type="checkbox" value=""/>
+                                    <i></i>
+                                    <span>Non-smoking</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="checkbox i-checks">
+                                <label>
+                                    <input type="checkbox" value=""/>
+                                    <i></i>
+                                    <span>Pet authorized</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="paymentMethod">Choose your payment method:</label>
+                    <select class="form-control" th:value="${bookingReference.paymentMethod}" name="paymentMethod" id="paymentMethod">
+                        <!--<option disabled="disabled" selected="selected" > &#45;&#45; select the method &#45;&#45;</option>-->
+                        <option>&nbsp;Cash</option>
+                        <option>&nbsp;e-Transfer</option>
+                        <option>&nbsp;WeChat Pay</option>
+                    </select>
+                </div>
+
+                <!--<div class="form-group">-->
+                    <!--<label for="chosenMultiple">Customize service provide:</label>-->
+                    <!--<div class="cols-sm-5">-->
+                        <!--<select class="chosen-select form-control" multiple="multiple" name="chosenMultiple" id="chosenMultiple">-->
+                            <!--<option value="AK">Alaska</option>-->
+                            <!--<option value="HI">Hawaii</option>-->
+                            <!--<option value="CA">California</option>-->
+                            <!--<option value="NV">Nevada</option>-->
+                            <!--<option value="OR">Oregon</option>-->
+                            <!--<option value="WA">Washington</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <div class="form-group">
+                    <label for="notes">Notes:</label>
+                    <textarea th:value="${bookingReference.notes}" class="form-control" name="notes" id="notes" placeholder="Notes" ></textarea>
+                </div>
+
+
+                <input type="hidden"
+                       name="${_csrf.parameterName}"
+                       value="${_csrf.token}"/>
+
+                <div class="form-group ">
+                    <button type="submit" class="btn btn-primary ">Submit Booking
+                    </button>
+                </div>
+
+            </form>
+
+            <div class="col-md-6">
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="gap"></div>
+</div>
+
+<div th:replace="common/header :: footer"/>
+
+<div th:replace="common/header :: body-bottom-scripts"/>
+
+</body>
+</html>
